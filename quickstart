@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir ~/Documents/emscripten && cd $_
+curl -O https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz
+tar xvzf ./emsdk-portable.tar.gz
+rm ./emsdk-portable.tar.gz
+cd ./emsdk_portable
+./emsdk update
+./emsdk install latest
+./emsdk activate latest
+echo "Try running ~/Documents/emscripten/emsdk_portable/emscripten/1.8.2/emcc to make sure everything worked"
