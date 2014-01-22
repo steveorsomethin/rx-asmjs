@@ -7,5 +7,5 @@ Clone the repo (including submodules) and run quickstart to get going.
 
 Compile hacking.cc with the following until we have a makefile
 
-```C++
-    clang++ hacking.cc -stdlib=libc++ -std=c++11
+```bash
+    ~/Documents/emscripten/emsdk_portable/emscripten/1.8.2/emcc hacking.cc -std=c++11
