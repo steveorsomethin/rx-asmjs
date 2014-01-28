@@ -1,0 +1,5 @@
+#!/bin/bash
+
+EMCC_LLVM_TARGET=i386-pc-linux-gnu ~/Documents/emscripten/emsdk_portable/emscripten/1.8.2/emcc -O2 hacking.cc -std=c++11 --llvm-lto 3 -s EXPORTED_FUNCTIONS="['_Scan', '_Select', '_Where']" --post-js ./post-compile.js -o ./bench/asm.js
+
+echo "The goods are in ./bench/browser-benchmarks.html"

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <script src="rx.js"></script>
+        <script src="benchmark.js"></script>
+        <script src="purejs.js"></script>
+        <script src="asm.js"></script>
+        <script>
+            function addResultRow(str) {
+                var outTable = document.getElementById('output'),
+                    tr = document.createElement('tr'),
+                    td = document.createElement('td');
+
+                outTable.appendChild(tr);
+                tr.appendChild(td);
+
+                td.innerHTML = str;
+            }
+
+            var suite = new Benchmark.Suite;
+
+            suite.
+            add('asm#scan', function() {
+                asm.scan(1000);
+            }).
+            add('pure#scan', function() {
+                pure.scan(1000);
+            }).
+            add('asm#select', function() {
+                asm.select(1000);
+            }).
+            add('pure#select', function() {
+                pure.select(1000);
+            }).
+            add('asm#where', function() {
+                asm.where(1000);
+            }).
+            add('pure#where', function() {
+                pure.where(1000);
+            }).
+            on('cycle', function(event) {
+                addResultRow(String(event.target));
+            }).
+            on('complete', function() {
+                addResultRow('DONE');
+            }).
+            run({'async': true});
+        </script>
+    </head>
+    <body>
+        <table id="output"></table>
+    </body>
+</html>
